@@ -44,6 +44,7 @@ class StatusResource {
 
     MqttService *mqttService;
     DHT12 dht12; 
+    char* topicResponse = "HealthAlertsAndroid";
 
 public:
     StatusResource(MqttService *_mqttService);

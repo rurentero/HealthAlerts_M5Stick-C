@@ -40,6 +40,8 @@ const char* mqttServer = "192.168.0.131";
 const int mqttPort = 1883;
 const char* mqttUser = "";
 const char* mqttPassword = "";
+char* topicResponse = "HealthAlertsAndroid";
+char* topicListener = "HealthAlerts";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -80,7 +82,7 @@ void setup() {
 
     // Subscribe to topic
     // TODO Define here the topics you are going to subscribe to
-    client.subscribe("mytopic/test");
+    client.subscribe(topicListener);
 
     // Initialize the M5StickObject (for LCD notifications)
     // TODO comment the line below if you don't use the LCD.
@@ -137,7 +139,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
             }
             else { // Default
                 Serial.println("Resource method not supported.");
-                mqttService.sendResponse("mytopic/testResponse","API Method not supported.");
+                mqttService.sendResponse(topicResponse,"API Method not supported.");
             }
 
     }
@@ -159,13 +161,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
             }
             else { // Default
                 Serial.println("Resource method not supported.");
-                mqttService.sendResponse("mytopic/testResponse","API Method not supported.");
+                mqttService.sendResponse(topicResponse,"API Method not supported.");
             }
 
     }
     else {  //Default
         Serial.println("API resource not supported.");
-        mqttService.sendResponse("mytopic/testResponse","API Resource not supported.");
+        mqttService.sendResponse(topicResponse,"API Resource not supported.");
     }
     Serial.println("-----------------------");
 }

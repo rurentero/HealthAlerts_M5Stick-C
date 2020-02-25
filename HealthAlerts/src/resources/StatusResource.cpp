@@ -37,10 +37,20 @@ using namespace org::openapitools::server::src::models;
         Serial.println(tmp);
 
         // Convert to string
-        char res[6];
-        dtostrf(tmp,5,2,res);
+        char temperature[6];
+        dtostrf(tmp,5,2,temperature);
 
-        mqttService->sendResponse("mytopic/testResponse",res);
+        // Build and sends the json
+        char *head = "{\"temperature\": ";
+        char *tail = "}";
+        char res[30];
+        strcpy(res, head);
+        strcat(res, temperature);
+        strcat(res, tail);
+
+        Serial.println(res);
+
+        mqttService->sendResponse(topicResponse,res);
         // additional response of type const char* :     mqttService->sendResponse("mytopic/testResponse","404 Not found response");
     }
     void StatusResource::getUser (int &sender) {
@@ -48,7 +58,7 @@ using namespace org::openapitools::server::src::models;
         Serial.println("Method: getUser");
         
         User res = User("05461A54","84 years old. Male. Lives alone.");
-        mqttService->sendResponse("mytopic/testResponse", (char*) JsonUtil::serializeUser(res));
+        mqttService->sendResponse(topicResponse, (char*) JsonUtil::serializeUser(res));
         // additional response of type const char* :     mqttService->sendResponse("mytopic/testResponse","404 Not found response");
     }
 

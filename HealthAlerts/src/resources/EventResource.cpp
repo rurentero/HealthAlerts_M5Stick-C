@@ -30,10 +30,11 @@ using namespace org::openapitools::server::src::models;
     void EventResource::postEvent (Event &_event, int &sender) {
         // TODO Mocked response
         Serial.println("Method: postEvent");
-        mqttService->sendResponse("mytopic/testResponse","201 Succesful response");
+        mqttService->sendResponse(topicResponse,"201 Succesful response");
         // additional response of type const char* :     mqttService->sendResponse("mytopic/testResponse","404 Not found response");
     }
 
+    // Post an event as a client
     void EventResource::sendAlert () {
 
     	// Creates a new location
@@ -41,7 +42,16 @@ using namespace org::openapitools::server::src::models;
 	    // Creates a new event
 	    Event alert = Event(1,"Need help!","I have fallen",loc);
 	    // Sends the event/alert
-	    mqttService->sendResponse("mytopic/testResponse", (char*) JsonUtil::serializeEvent(alert));
+        char *head = "{\"resource\": \"Event\",\"method\": \"postEvent\",\"sender\": \"11\",\"params\": {\"event\":";
+        char *tail = "}}";
+        char res[300];
+        strcpy(res, head);
+        strcat(res, (char*) JsonUtil::serializeEvent(alert));
+        strcat(res, tail);
+
+        Serial.println(res);
+
+	    mqttService->sendResponse(topicResponse, res);
 	}
 
 }

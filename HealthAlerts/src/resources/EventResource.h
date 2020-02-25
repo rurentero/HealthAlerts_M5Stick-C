@@ -39,6 +39,7 @@ using namespace org::openapitools::server::src::models;
 class EventResource {
 
     MqttService *mqttService;
+    char* topicResponse = "HealthAlertsAndroid";
 
 public:
     EventResource(MqttService *_mqttService);
