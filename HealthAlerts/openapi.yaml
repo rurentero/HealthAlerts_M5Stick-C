@@ -48,8 +48,8 @@ paths:
     get:
       tags:
         - Status
-      summary: Gets the user temperature
-      description: Obtain current user temperature
+      summary: Gets the environment temperature
+      description: Obtain current environment temperature
       operationId: getTemperature
       responses:
         '200':
