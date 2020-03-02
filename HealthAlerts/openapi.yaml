@@ -63,6 +63,25 @@ paths:
                 example: 36.5
         '404':
           $ref: '#/components/responses/404'
+  /bodyTemperature:
+    get:
+      tags:
+        - Status
+      summary: Gets the user temperature
+      description: Obtain current user temperature
+      operationId: getBodyTemperature
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                title: Endpoint not found
+                type: number
+                format: double
+                example: 36.5
+        '404':
+          $ref: '#/components/responses/404'
 components:
   schemas:
     Event:
