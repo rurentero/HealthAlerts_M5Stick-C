@@ -49,6 +49,7 @@ class StatusResource {
 public:
     StatusResource(MqttService *_mqttService);
 
+	void getBodyTemperature (int &sender);
     void getTemperature (int &sender);
     void getUser (int &sender);
 

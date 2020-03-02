@@ -36,7 +36,7 @@ using namespace org::openapitools::server::src::resources;
 // TODO Put here the SSID and Password of your Wifi Network. MQTT server IP and port (default 1883). MQTT User and password if needed.
 const char* ssid = "Gloin";
 const char* password = "Gloin2014";
-const char* mqttServer = "192.168.0.131";
+const char* mqttServer = "192.168.0.112";
 const int mqttPort = 1883;
 const char* mqttUser = "";
 const char* mqttPassword = "";
@@ -158,6 +158,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 
                 
                 StatusResourceController.getTemperature( sender);
+            }
+            else if (strcmp(method_,"getBodyTemperature")==0) { 
+                
+                
+                StatusResourceController.getBodyTemperature( sender);
             }
             else { // Default
                 Serial.println("Resource method not supported.");

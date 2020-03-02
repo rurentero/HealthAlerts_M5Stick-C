@@ -27,6 +27,28 @@ using namespace org::openapitools::server::src::models;
         mqttService = _mqttService;
     };
 
+    void StatusResource::getBodyTemperature (int &sender) {
+        // TODO Mocked response
+        Serial.println("Method: getBodyTemperature");
+        // Generate random value
+        float randomTemp = ((float)rand() / RAND_MAX) * (37.50 - 36.00) + 36.00;
+
+        // Convert to string
+        char temperature[6];
+        dtostrf(randomTemp,5,2,temperature);
+
+        // Build and sends the json
+        char *head = "{\"temperature\": ";
+        char *tail = "}";
+        char res[30];
+        strcpy(res, head);
+        strcat(res, temperature);
+        strcat(res, tail);
+
+        mqttService->sendResponse(topicResponse,res);
+        // additional response of type const char* :     mqttService->sendResponse(topicResponse,"404 Not found response");
+    }
+
     void StatusResource::getTemperature (int &sender) {
         // TODO Mocked response
         Serial.println("Method: getTemperature");
