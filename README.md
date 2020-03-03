@@ -45,7 +45,7 @@ Para este escenario se va a utilizar el M5-Stick-C, un modelo compacto con un mi
 
 **Especificación** OpenAPI para Health Alerts: https://raw.githubusercontent.com/rurentero/HealthAlerts_M5Stick-C/master/HealthAlerts/openapi.yaml
 
-![image-20200303104108868](.\README.assets\image-20200303104108868.png)
+![image-20200303104108868](./README.assets/image-20200303104108868.png)
 
 
 
