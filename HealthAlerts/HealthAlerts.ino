@@ -34,8 +34,8 @@ using namespace org::openapitools::server::src::models;
 using namespace org::openapitools::server::src::resources;
 
 // TODO Put here the SSID and Password of your Wifi Network. MQTT server IP and port (default 1883). MQTT User and password if needed.
-const char* ssid = "Gloin";
-const char* password = "Gloin2014";
+const char* ssid = "SSID";
+const char* password = "SSIDPassword";
 const char* mqttServer = "192.168.0.112";
 const int mqttPort = 1883;
 const char* mqttUser = "";

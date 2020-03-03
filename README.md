@@ -567,11 +567,11 @@ Se necesita que todos los elementos estén conectados a la misma red Wifi.
 
 ## 5.2. Broker MQTT
 
-Como se trabaja con MQTT, es necesario desplegar un broker que se encargará de enviar los mensajes. Sirve cualquiera, pero para este ejemplo se ha utilizado **MQTT Broker App** descargado desde **Play Store**.
+Como se trabaja con MQTT, es necesario desplegar un broker que se encargará de enviar los mensajes. Sirve cualquiera, pero para este ejemplo se ha utilizado **MQTT Broker** descargado desde **Play Store**.
 
 Al abrir la aplicación se puede levantar el broker en la IP obtenida por el teléfono y en el puerto por defecto 1883.
 
-
+![image-20200303135619989](README.assets/image-20200303135619989.png)
 
 ## 5.3. Despliegue del software
 

@@ -23,19 +23,17 @@ Install [Arduino IDE] via (https://www.arduino.cc/en/main/software).
 
 - If you are using Arduino IDE, place your project in your "Arduino" folder (located in Documents/Arduino by default) along with your installed libraries.
 - Unpack "Esp32Microcontroller-server" content inside a folder with the same name as main program:
-        ./Arduino
-            |---Esp32_MQTT
-                |---Esp32_MQTT.ino
-                |---src
-                |---README.md
-            |---libraries
+    - ./Arduino
+        - Esp32_MQTT
+            - Esp32_MQTT.ino
+            - src
+            - README.md
+            - libraries
 - Install required Arduino Libraries:
     - WiFi
     - PubSubClient
     - ArduinoJson
-
 - Main sketch have some TODOs you have to complete before running the code (e.g: WiFi and MQTT configuration or changes in the import statements).
-
 - Build and program your Esp32 microcontroller via Arduino IDE.
 
 ## Important notes
