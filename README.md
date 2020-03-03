@@ -8,10 +8,6 @@ Como caso de uso se propone un escenario para su implementación y prueba en dis
 
 
 
-# Índice
-
-[toc]
-
 # 1. Requisitos previos
 
 Para llevar a cabo los pasos de este documento son necesarios los siguientes elementos:
@@ -218,7 +214,7 @@ E implementarlo en `EventResource.cpp`.
 
 **Especificación** OpenAPI para Health Alerts: https://raw.githubusercontent.com/rurentero/HealthAlerts_M5Stick-C/master/HealthAlerts/openapi.yaml
 
-![image-20200303104401394](.\README.assets\image-20200303104401394.png)
+![image-20200303104401394](./README.assets/image-20200303104401394.png)
 
 
 
