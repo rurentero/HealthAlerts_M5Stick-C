@@ -35,8 +35,8 @@ using namespace org::openapitools::server::src::resources;
 
 // TODO Put here the SSID and Password of your Wifi Network. MQTT server IP and port (default 1883). MQTT User and password if needed.
 const char* ssid = "SSID";
-const char* password = "SSIDPassword";
-const char* mqttServer = "192.168.0.112";
+const char* password = "WifiPassword";
+const char* mqttServer = "192.168.43.1";
 const int mqttPort = 1883;
 const char* mqttUser = "";
 const char* mqttPassword = "";
@@ -68,21 +68,6 @@ void setup() {
 
     client.setServer(mqttServer, mqttPort);
     client.setCallback(callback);
-
-    while (!client.connected()) {
-        Serial.println("Connecting to MQTT...");
-        if (client.connect("ESP32Client", mqttUser, mqttPassword )) {
-            Serial.println("connected");
-        } else {
-            Serial.print("failed with state ");
-            Serial.print(client.state());
-            delay(2000);
-        }
-    }
-
-    // Subscribe to topic
-    // TODO Define here the topics you are going to subscribe to
-    client.subscribe(topicListener);
 
     // Initialize the M5StickObject (for LCD notifications)
     // TODO comment the line below if you don't use the LCD.
@@ -178,6 +163,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 
 void loop() {
+    // Check connection
+    if (!client.connected()) {
+      reconnect();
+    }
     // MQTT listener
     client.loop();
     // wait for push button 
@@ -213,4 +202,22 @@ void printAlert(){
     M5.Lcd.setTextSize(1);
     M5.Lcd.printf("Alert sent!");
     M5.Lcd.fillCircle(40, 80, 30, RED);
+}
+
+// Reconects to MQTT Broker. Program will block until the client reconnects 
+void reconnect() {
+    while (!client.connected()) {
+        Serial.println("Connecting to MQTT...");
+        if (client.connect("ESP32Client", mqttUser, mqttPassword )) {
+            Serial.println("connected");
+        } else {
+            Serial.print("failed with state ");
+            Serial.print(client.state());
+            delay(2000);
+        }
+    }
+
+    // Subscribe/Re-subscribe to topic
+    // TODO Define here the topics you are going to subscribe to
+    client.subscribe(topicListener);
 }

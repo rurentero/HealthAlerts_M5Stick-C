@@ -139,6 +139,12 @@ Método *getUser* en `StatusResource.cpp`
     }
 ```
 
+Para que funcione correctamente la obtención de temperatura con el módulo ENV de M5-Stick-C es necesario añadir la siguiente línea al final del método `setup()` del fichero `Esp32_MQTT.ino`.
+
+```c++
+Wire.begin(0,26);
+```
+
 
 
 ## 3.3. Implementación: Parte cliente
